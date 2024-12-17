@@ -1,14 +1,10 @@
-pub fn add(left: u64, right: u64) -> u64 {
-    left + right
-}
+pub mod point;
+pub mod triangle;
 
-#[cfg(test)]
-mod tests {
-    use super::*;
+pub use point::*;
+pub use triangle::*;
 
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
+#[derive(Debug, Clone)]
+pub struct Polygon {
+    points: Vec<Point>,
 }
