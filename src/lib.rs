@@ -99,10 +99,10 @@ impl Polygon {
         let mut res = vec![];
         let mut tip = 0;
 
-        while self.points.len() != 0 {
+        while self.points.len() != 0 && tip < self.points.len() {
             if self.is_ear(tip) {
-                self.points.remove(tip);
                 res.push(self.ear(tip));
+                self.points.remove(tip);
 
                 tip = 0;
                 continue;
