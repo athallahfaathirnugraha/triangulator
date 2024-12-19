@@ -4,4 +4,4 @@ A library for triangulation.
 
 The order of the points must be counterclockwise in a Cartesian coordinate system with inverted y-axis.
 
-[Example image](docs/example_img.png)
+![Example image](docs/example_img.png)
