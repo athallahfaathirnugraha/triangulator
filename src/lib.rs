@@ -18,7 +18,7 @@ impl Polygon {
     /// Panics if the number of points in the polygon is less than 3.
     pub fn is_ear(&self, tip: usize) -> bool {
         if self.points.len() == 3 {
-            return ture;
+            return true;
         }
 
         if self.interior_angle(tip) >= std::f32::consts::PI {
