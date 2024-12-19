@@ -25,7 +25,7 @@ impl Polygon {
             return false;
         }
 
-        let triangle = self.triangle(tip);
+        let triangle = self.ear(tip);
 
         for &point in &self.points {
             if point == triangle.a || point == triangle.b || point == triangle.c {
@@ -85,8 +85,7 @@ impl Polygon {
     }
 
     /// Panics if the number of points in the polygon is less than 3.
-    // TODO: rename to ear
-    pub fn triangle(&self, tip: usize) -> Triangle {
+    pub fn ear(&self, tip: usize) -> Triangle {
         let (prev_point, next_point) = self.prev_next(tip);
 
         Triangle {
@@ -103,7 +102,7 @@ impl Polygon {
         while self.points.len() != 0 {
             if self.is_ear(tip) {
                 self.points.remove(tip);
-                res.push(self.triangle(tip));
+                res.push(self.ear(tip));
 
                 tip = 0;
                 continue;
