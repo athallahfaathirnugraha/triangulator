@@ -4,7 +4,7 @@ pub mod triangle;
 pub use point::*;
 pub use triangle::*;
 
-/// Assumes the points are in counterclockwise order.
+/// Assumes the points are in counterclockwise order in Cartesian coordinate inverted y-axis.
 #[derive(Debug, Clone)]
 pub struct Polygon {
     points: Vec<Point>,
