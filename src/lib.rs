@@ -85,6 +85,7 @@ impl Polygon {
     }
 
     /// Panics if the number of points in the polygon is less than 3.
+    // TODO: rename to ear
     pub fn triangle(&self, tip: usize) -> Triangle {
         let (prev_point, next_point) = self.prev_next(tip);
 
@@ -93,5 +94,24 @@ impl Polygon {
             b: self.points[tip],
             c: self.points[next_point]
         }
+    }
+
+    pub fn triangulate(mut self) -> Vec<Triangle> {
+        let mut res = vec![];
+        let mut tip = 0;
+
+        while self.points.len() != 0 {
+            if self.is_ear(tip) {
+                self.points.remove(tip);
+                res.push(self.triangle(tip));
+
+                tip = 0;
+                continue;
+            }
+
+            tip += 1;
+        }
+
+        res
     }
 }
